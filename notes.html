@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+    <link rel="stylesheet" href="./styles/notes.css">
+    <script src="https://kit.fontawesome.com/60138d8628.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="notes" id="notes">
+            <div class="notes__btn" id="notes__btn"><button class="addNote" id="addNote"><i
+                        class="fa-solid fa-circle-plus"></i>NEW NOTE</button>
+            </div>
+            <div class="notes__prev--all" id="notes__prev--all">
+                <div class="notes__prev">
+                    <div class="notes__prev--title">Lecture Notes</div>
+                    <div class="notes__prev--content">Html stands for HyperText Markup
+                        Language. it is a widely used
+                        language for backbone of web development Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit. Nesciunt odit, quae quia atque voluptatem quaerat recusandae quod maxime inventore quasi.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam nulla itaque consequuntur</div>
+                    <div class="notes__prev--date">
+                        Friday, 26 september, 2021
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="newNote" id="newNote">
+            <div class="newNote__title" id="newNote__title">
+                <label for="newNote__title--label"></label>
+                <input type="text" name="" id="newNote__title--label" placeholder="Title">
+            </div>
+            <div class="newNote__content"><textarea id="newNote__content" cols="70" rows="40"
+                    placeholder="You can start writing here. . . "></textarea>
+            </div>
+            <button type="submit" id="bottom">submit</button>
+        </div>
+    </div>
+    <script src="./js/notes.js"></script>
+</body>
+
+</html>
