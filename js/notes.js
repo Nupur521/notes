@@ -3,6 +3,7 @@ let content = document.getElementById("newNote__content");
 const button = document.getElementById("notes__btn");
 const prevNotes = document.getElementById("notes__prev--all");
 const submitBtn = document.getElementById('bottom');
+let trashIcon = document.querySelector(".trash");
 let notesObj = [];
 
 displayNotes();
@@ -65,20 +66,29 @@ function displayNotes() {
         notesObj = JSON.parse(notes);
 
     let html = "";
+    if (notesObj.length == 0)
+        prevNotes.innerHTML = `<div class="emptyBox">
+    No notes to show, click above to add new notes 
+</div>`
+
     notesObj.forEach((element, index) => {
         html += `<div class="notes__prev"><div class="notes__prev--title" id="notes__prev--title">${element.title}</div>
                     <div class="notes__prev--content" id="notes__prev-content">${element.content}</div>
                     <div class="notes__prev--date" id="notes__prev--date">${element.Date}
+                    <i id=${index} onclick="deleteNode(this.id)" class="fa-solid fa-trash trash"></i>
                     </div></div>`
-
-        if (prevNotes.length != 0)
+        if (notesObj.length != 0)
             prevNotes.innerHTML = html;
+
+
     });
 }
 
-//   const item = document.createElement("div");
-//   item.setAttribute("class", "notes__prev");
-//   item.innerHTML = `
-//                     `;
+//delete a note
 
-//   prevNotes.appendChild(item);
+function deleteNode(index) {
+    notesObj.splice(index, 1);
+    localStorage.setItem("notes", JSON.stringify(notesObj));
+    console.log(index)
+    displayNotes();
+}

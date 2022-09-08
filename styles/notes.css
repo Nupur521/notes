@@ -15,6 +15,7 @@ body {
     display: flex;
     flex-direction: column;
     width: 18%;
+    height: 100vh;
 }
 
 .notes__btn {
@@ -22,10 +23,18 @@ body {
 
 }
 
-i {
+.add {
     color: rgba(255, 255, 255, 0.886);
     margin-right: 0.3rem;
 }
+
+.trash {
+    float: right;
+    padding-right: 0.7rem;
+    padding-top: 0.2rem;
+    font-size: 0.8rem;
+}
+
 
 .notes__btn>.addNote {
     background-color: #acdb86;
@@ -43,6 +52,7 @@ i {
 }
 
 .notes__prev--all {
+    height: 100vh;
     display: flex;
     flex-direction: column;
 }
@@ -72,6 +82,20 @@ i {
 
 .notes__prev--date {
     color: grey;
+}
+
+.emptyBox {
+    width: 18%;
+    height: 75vh;
+    position: absolute;
+    align-items: center;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    color: #b4b1b1;
+    text-align: center;
+    border: 0.02rem solid rgb(234, 231, 231);
+
 }
 
 /* title and new note */
