@@ -2,7 +2,7 @@ let title = document.getElementById("newNote__title--label");
 let content = document.getElementById("newNote__content");
 const button = document.getElementById("notes__btn");
 const prevNotes = document.getElementById("notes__prev--all");
-const submitBtn = document.getElementById('bottom');
+const submitBtn = document.getElementById('submitNote');
 let trashIcon = document.querySelector(".trash");
 let notesObj = [];
 
