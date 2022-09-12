@@ -28,14 +28,17 @@ body {
     margin-right: 0.3rem;
 }
 
-.trash {
+.trash,
+.edit {
     float: right;
     padding-right: 0.7rem;
     padding-top: 0.2rem;
     font-size: 0.8rem;
+    color: #8080808a;
 }
 
-.trash:hover {
+.trash:hover,
+.edit:hover {
     cursor: pointer;
     transform: scale(1.2);
 }

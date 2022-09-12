@@ -5,6 +5,8 @@ const prevNotes = document.getElementById("notes__prev--all");
 const submitBtn = document.getElementById('submitNote');
 let trashIcon = document.querySelector(".trash");
 let notesObj = [];
+let edited = false;
+let ind = -1;
 
 displayNotes();
 let NoteDate = new Date();
@@ -32,22 +34,31 @@ submitBtn.addEventListener("click", (e) => {
     let notesTitle = title.value;
     let notesContent = content.value;
 
+    if (!edited) {
 
-    let note = {
-        title: notesTitle,
-        content: notesContent,
-        Date: date
-    };
 
-    let allNotes = localStorage.getItem("notes");
-    if (allNotes == null)
-        notesObj = [];
-    else
-        notesObj = JSON.parse(allNotes);
+        let note = {
+            title: notesTitle,
+            content: notesContent,
+            Date: date
+        };
 
-    notesObj.push(note);
-    localStorage.setItem("notes", JSON.stringify(notesObj));
-    displayNotes();
+        let allNotes = localStorage.getItem("notes");
+        if (allNotes == null)
+            notesObj = [];
+        else
+            notesObj = JSON.parse(allNotes);
+
+        notesObj.push(note);
+        localStorage.setItem("notes", JSON.stringify(notesObj));
+        displayNotes();
+    } else {
+        notesObj[ind].title = notesTitle;
+        notesObj[ind].content = notesContent;
+        localStorage.setItem("notes", JSON.stringify(notesObj));
+        edited = false;
+        displayNotes();
+    }
 });
 
 button.addEventListener('click', () => {
@@ -72,7 +83,7 @@ function displayNotes() {
 </div>`
 
     notesObj.forEach((element, index) => {
-        html += `<div class="notes__prev"><div class="notes__prev--title" id="notes__prev--title">${element.title}</div>
+        html += `<div class="notes__prev"><div class="notes__prev--title" id="notes__prev--title">${element.title}<i id=${index} onclick="editNote(this.id)" class="fas fa-edit edit"></i></div>
                     <div class="notes__prev--content" id="notes__prev-content">${element.content}</div>
                     <div class="notes__prev--date" id="notes__prev--date">${element.Date}
                     <i id=${index} onclick="deleteNode(this.id)" class="fa-solid fa-trash trash"></i>
@@ -89,6 +100,15 @@ function displayNotes() {
 function deleteNode(index) {
     notesObj.splice(index, 1);
     localStorage.setItem("notes", JSON.stringify(notesObj));
-    console.log(index)
     displayNotes();
+}
+
+//edit a note
+
+function editNote(index) {
+
+    edited = true;
+    title.value = notesObj[index].title;
+    content.value = notesObj[index].content;
+    ind = index;
 }
